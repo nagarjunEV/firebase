@@ -6,15 +6,18 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
   const signUp = async () => {
+    setMessage('');
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      console.log('User created successfully');
+      setMessage('User created successfully');
       setEmail('');
       setPassword('');
     } catch (err) {
       console.log(`Error while creating user ${err}`);
+      setMessage(err.message);
     }
   };
 
@@ -35,6 +38,7 @@ function SignUp() {
       <button disabled={!email || !password} onClick={() => signUp()}>
         Sign Up
       </button>
+      <h3>{message}</h3>
     </div>
   );
 }

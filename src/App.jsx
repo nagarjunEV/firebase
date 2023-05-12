@@ -12,13 +12,18 @@ function App() {
         <h2>Welcome</h2>
         <h3>
           {toggle
-            ? 'Already have an account! Click Login'
-            : 'We have missed you! Click Sign Up'}
+            ? `Already have an account! Click Login`
+            : 'We have missed you! Please Click Sign Up if you do not have an account'}
         </h3>
         <button onClick={() => setToggle(!toggle)}>
           {toggle ? 'Login' : 'Sign Up'}
         </button>
         <p style={{ marginBottom: 50 }}></p>
+        <h3>
+          {toggle
+            ? `We have missed you! Please enter your details to Sign Up`
+            : 'Please enter your credentials to Login'}
+        </h3>
         {toggle ? <SignUp /> : <Login />}
       </div>
     </>
